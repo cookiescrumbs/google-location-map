@@ -20,16 +20,7 @@ const map = new google.maps.Map(mapElement, mapOptions());
 const lat = () => parseFloat(mapElement.dataset.lat) || null;
 const lng = () => parseFloat(mapElement.dataset.lng) || null;
 const zoom = () => parseInt(mapElement.dataset.zoom, 10) || 9;
-const latLng = () => {
-
-    const latLng = new google.maps.LatLng(lat(), lng());
-
-    return latLng;
-
-};
-
-// const latLng = new google.maps.LatLng(lat(), lng());
-
+const latLng = new google.maps.LatLng(lat(), lng());
 
 const marker = () => {
 
