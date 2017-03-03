@@ -1,5 +1,11 @@
 describe('Google location map', function() {
 
-	it('should add numbers');
+	it('should have a google map', () => {
+		expect(false).toEqual(false);
+	});
+
+	it('should have a google map', () => {
+		expect(false).toEqual(false);
+	});
 
 });

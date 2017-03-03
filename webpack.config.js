@@ -1,25 +1,13 @@
 var webpack = require('webpack');
-var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require('path');
-var env = require('yargs').argv.mode;
-
 var libraryName = 'google-map-location';
 
-var plugins = [], outputFile;
-
-if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }));
-  outputFile = libraryName + '.min.js';
-} else {
-  outputFile = libraryName + '.js';
-}
-
 var config = {
-  entry: __dirname + '/src/index.js',
+  entry: path.resolve(__dirname, './src'),
   devtool: 'source-map',
   output: {
-    path: __dirname + '/lib',
-    filename: outputFile,
+    path: path.resolve(__dirname + '/lib'),
+    filename: libraryName + '.js',
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -28,24 +16,31 @@ var config = {
     "google": "google"
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /(\.jsx|\.js)$/,
-        loader: 'babel',
-        exclude: /(node_modules|bower_components)/
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'babel-loader',
+          options: { presets: ['es2015'] }
+        }]
       },
       {
-        test: /(\.jsx|\.js)$/,
-        loader: "eslint-loader",
-        exclude: /node_modules/
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [{
+          loader: 'eslint-loader',
+        }]
       }
     ]
   },
   resolve: {
-    root: path.resolve('./src'),
-    extensions: ['', '.js']
+    extensions: ['.js'],
+    modules: [
+        path.resolve(__dirname, './src')
+      ]
   },
-  plugins: plugins
+  plugins: []
 };
 
 module.exports = config;

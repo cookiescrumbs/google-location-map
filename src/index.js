@@ -24,7 +24,7 @@ const latLng = new google.maps.LatLng(lat(), lng());
 
 const marker = () => {
 
-    const marker = new google.maps.Marker({ position: latLng(), map: map });
+    const marker = new google.maps.Marker({ position: latLng, map: map });
 
     return marker;
 };

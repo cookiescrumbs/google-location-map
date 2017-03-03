@@ -2,11 +2,11 @@
   "name": "google-map-location",
   "version": "0.0.1",
   "description": "Simple Google map with a centred map and a marker",
-  "main": "lib/library.js",
+  "main": "lib/gogole-map-location.js",
   "scripts": {
-    "build": "webpack --mode=build",
-    "dev": "webpack --progress --colors --watch --mode=dev",
-    "test": "./node_modules/karma/bin/karma start karma.conf.js"
+    "build": "webpack -p --progress",
+    "dev": "webpack --progress --colors --watch -d",
+    "test": "./node_modules/karma/bin/karma start ./test/karma.conf.js"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,6 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.1.0",
     "karma-webpack": "^2.0.2",
-    "webpack": "^1.13.3",
     "yargs": "^6.4.0"
   }
 }
