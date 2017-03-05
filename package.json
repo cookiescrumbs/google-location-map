@@ -37,7 +37,6 @@
     "karma-webpack": "^2.0.2",
     "phantomjs": "^2.1.7",
     "phantomjs-polyfill": "0.0.2",
-    "requirejs": "^2.3.3",
     "webpack": "^2.2.1"
   }
 }

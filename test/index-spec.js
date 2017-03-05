@@ -1,19 +1,9 @@
+import googleLocationMap from '../src/index.js';
 
-// const mountPoint = () => {
-//     var domNode = document.createElement('div');
-//     document.body.appendChild(domNode);
-//     return domNode;
-// };
+describe('Something about the map', () => {
 
-var GoogleLocationMap = require('../src/index.js');
+    it('should do Something', () => {
+        expect(true).toBe(true);
+    });
 
-
-// describe('Google maps blah', () => {
-
-//     it('should do something', () => {
-// 	   expect(googleLocationMap.render()).toEqual("hello");
-// 	});
-
-// });
-
-
+});
