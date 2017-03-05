@@ -1,11 +1,19 @@
-describe('Google location map', function() {
 
-	it('should have a google map', () => {
-		expect(false).toEqual(false);
-	});
+// const mountPoint = () => {
+//     var domNode = document.createElement('div');
+//     document.body.appendChild(domNode);
+//     return domNode;
+// };
 
-	it('should have a google map', () => {
-		expect(false).toEqual(false);
-	});
+var GoogleLocationMap = require('../src/index.js');
 
-});
+
+// describe('Google maps blah', () => {
+
+//     it('should do something', () => {
+// 	   expect(googleLocationMap.render()).toEqual("hello");
+// 	});
+
+// });
+
+

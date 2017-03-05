@@ -1,8 +1,9 @@
 {
   "presets": [
-    "es2015"
+    "babel-preset-es2015"
   ],
   "plugins": [
-    "babel-plugin-add-module-exports"
+    "add-module-exports",
+    "transform-es2015-modules-commonjs"
   ]
 }
