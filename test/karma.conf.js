@@ -15,6 +15,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCflXBfzx_Gvy2f-DiCeymxmqp7P4BOHws',
             require.resolve('phantomjs-polyfill/bind-polyfill'),
             'test/*-spec.js'
         ],

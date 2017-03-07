@@ -1,8 +1,9 @@
-import * as googleLocationMap from '../src/index.js';
+import * as googleMap from '../src/google-map.js';
 
-describe('Something about the map', () => {
 
-    beforeEach(function() {
+describe('Google Maps', () => {
+
+    beforeEach(() => {
 
         const mapElement = '<div id="location-map" data-lat="52.9999956" data-lng="-3.9429671" data-zoom="9"></div>';
 
@@ -10,18 +11,20 @@ describe('Something about the map', () => {
             'afterbegin',
             mapElement
         );
+
+        document.addEventListener('DOMContentLoaded', () => {
+            googleMap.render();
+        });
+
     });
 
-    afterEach(function() {
+    afterEach(() => {
         document.body.removeChild(document.getElementById('location-map'));
     });
 
-    beforeEach(function() {
-        googleLocationMap.render();
-    });
-
-    it('should do Something', () => {
-        expect("hello").toBe('Hello');
+    it('should render a Google map with a marker for the location', () => {
+        const map = document.querySelector('.gm-style');
+        console.log(map);
     });
 
 });
