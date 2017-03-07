@@ -19,14 +19,6 @@ const render = () => {
     const lng = () => parseFloat(mapElement.dataset.lng) || null;
     const zoom = () => parseInt(mapElement.dataset.zoom, 10) || 9;
     const latLng = new google.maps.LatLng(lat(), lng());
-
-    const marker = () => {
-
-        const marker = new google.maps.Marker({ position: latLng, map: map });
-
-        return marker;
-    };
-
     const center = {
         lat: lat(),
         lng: lng()
@@ -35,7 +27,12 @@ const render = () => {
     map.setCenter(center);
     map.setZoom(zoom());
 
-    google.maps.event.addListenerOnce(map, 'idle', marker());
+    google.maps.event.addListenerOnce(map, 'idle', () => {
+
+        const marker = new google.maps.Marker({ position: latLng, map: map });
+
+        return marker;
+    });
 };
 
 export { render };
