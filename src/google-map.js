@@ -1,38 +1,35 @@
 import google from 'google';
 
-const render = () => {
-    const mapElement = document.querySelector('#location-map');
-    const mapOptions = () => ({
-        draggable: true,
-        streetViewControl: true,
-        mapTypeControlOptions: {
-            mapTypeIds: [
-                google.maps.MapTypeId.SATELLITE,
-                google.maps.MapTypeId.ROADMAP
-            ],
-        },
-        mapTypeId: google.maps.MapTypeId.SATELLITE
-    });
+const lat = (el) => parseFloat(el.dataset.lat) || null;
+const lng = (el) => parseFloat(el.dataset.lng) || null;
+const zoom = (el) => parseInt(el.dataset.zoom, 10) || 9;
+const center = (el) => ({
+    lat: lat(el),
+    lng: lng(el)
+});
 
-    const map = new google.maps.Map(mapElement, mapOptions());
-    const lat = () => parseFloat(mapElement.dataset.lat) || null;
-    const lng = () => parseFloat(mapElement.dataset.lng) || null;
-    const zoom = () => parseInt(mapElement.dataset.zoom, 10) || 9;
-    const latLng = new google.maps.LatLng(lat(), lng());
-    const center = {
-        lat: lat(),
-        lng: lng()
-    };
+const latLng = (lat, lng) => {
+    const latLng = new google.maps.LatLng(lat, lng);
 
-    map.setCenter(center);
-    map.setZoom(zoom());
+    return latLng;
+};
 
+const addMarker = (map, lat, lng) => {
     google.maps.event.addListenerOnce(map, 'idle', () => {
 
-        const marker = new google.maps.Marker({ position: latLng, map: map });
+        const marker = new google.maps.Marker({ position: latLng(lat, lng), map: map });
 
         return marker;
     });
+};
+
+const render = (mapElement, mapOptions) => {
+    const map = new google.maps.Map(mapElement, mapOptions());
+
+    map.setCenter(center(mapElement));
+    map.setZoom(zoom(mapElement));
+
+    addMarker(map, lat(mapElement), lng(mapElement));
 };
 
 export { render };
