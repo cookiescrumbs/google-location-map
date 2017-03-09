@@ -1,4 +1,3 @@
-import google from 'google';
 import * as googleMap from '../src/google-map.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,12 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
         streetViewControl: true,
         mapTypeControlOptions: {
             mapTypeIds: [
-                google.maps.MapTypeId.SATELLITE,
-                google.maps.MapTypeId.ROADMAP
+                'satellite',
+                'roadmap'
             ],
         },
-        mapTypeId: google.maps.MapTypeId.SATELLITE
+        mapTypeId: 'satellite'
+    });
+    const lat = (el) => parseFloat(el.dataset.lat) || null;
+    const lng = (el) => parseFloat(el.dataset.lng) || null;
+    const zoom = (el) => parseInt(el.dataset.zoom, 10) || 9;
+    const center = (el) => ({
+        lat: lat(el),
+        lng: lng(el)
+    });
+    const mapSettings = () => ({
+        lat: lat(mapElement),
+        lng: lng(mapElement),
+        zoom: zoom(mapElement),
+        center: center(mapElement)
     });
 
-    googleMap.render(mapElement, mapOptions);
+    const map = googleMap.render(mapElement, mapOptions, mapSettings);
+
+    googleMap.addMarker(map, mapSettings().lat, mapSettings().lng);
+
 });
